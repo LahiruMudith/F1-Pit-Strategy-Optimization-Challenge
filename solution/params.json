@@ -1,0 +1,28 @@
+{
+    "compound_offset": {
+        "SOFT": -0.6,
+        "MEDIUM": 0.0,
+        "HARD": 0.55
+    },
+    "warmup_laps": {
+        "SOFT": 2,
+        "MEDIUM": 2,
+        "HARD": 2
+    },
+    "deg_a": {
+        "SOFT": 0.004,
+        "MEDIUM": 0.0022,
+        "HARD": 0.0014
+    },
+    "deg_b": {
+        "SOFT": 0.018,
+        "MEDIUM": 0.0105,
+        "HARD": 0.0075
+    },
+    "temp_ref": 30.0,
+    "temp_k": {
+        "SOFT": -0.01,
+        "MEDIUM": -0.006,
+        "HARD": -0.004
+    }
+}

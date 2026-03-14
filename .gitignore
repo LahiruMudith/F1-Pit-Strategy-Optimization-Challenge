@@ -13,7 +13,6 @@ target/
 .difficulty_mapping.json
 
 # IDE files
-.vscode/
 .idea/
 *.swp
 *.swo
@@ -36,3 +35,4 @@ temp/
 # System files
 Thumbs.db
 desktop.ini
+config.bat
