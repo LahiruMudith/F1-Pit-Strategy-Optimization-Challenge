@@ -106,7 +106,11 @@ def parse_strategies(strategies: Dict[str, Any]) -> List[DriverPlan]:
     for pos in sorted(strategies.keys(), key=lambda s: int(s.replace("pos", ""))):
         s = strategies[pos]
         pit_stops = [
-            PitStop(lap=int(p["lap"], from_tire=str(p["from_tire"]), to_tire=str(p["to_tire"]))
+            PitStop(
+                lap=int(p["lap"]),
+                from_tire=str(p["from_tire"]),
+                to_tire=str(p["to_tire"]),
+            )
             for p in s.get("pit_stops", [])
         ]
         pit_stops.sort(key=lambda p: p.lap)
@@ -142,7 +146,7 @@ def simulate_total_time(race: RaceConfig, plan: DriverPlan, params: TireParams) 
     pit_map: Dict[int, PitStop] = {p.lap: p for p in plan.pit_stops}
 
     compound = plan.starting_tire
-    tire_age = 0
+    tire_age = 1
 
     total = 0.0
     for lap in range(1, race.total_laps + 1):
@@ -175,7 +179,7 @@ def simulate_race(race_config: Dict[str, Any], strategies: Dict[str, Any], param
         t = simulate_total_time(race, plan, params)
         times.append((t, plan.driver_id))
 
-    times.sort(key=lambda x: x[0])
+    times.sort(key=lambda x: (round(x[0], 6), x[1]))
     return [driver_id for _, driver_id in times]
 
 def main() -> None:
